@@ -107,7 +107,7 @@ export function ProjectsSection() {
       icon: <Globe className="w-6 h-6" />
     },
     {
-      title: "Productivity Life Planner App",
+      title: "Productivity Life Planner App (under development) ",
       description: "Created an intuitive planning tool to help users organize daily tasks, set goals, and track their productivity over time.",
       technologies: ["React","JavaScript","TailwindCss"],
       live:"https://personal-life.netlify.app/",code:"https://github.com/Abdelrahman-Mohamed-program/personal-life",
