@@ -309,7 +309,7 @@ export function HeroSection() {
       </div>
       
       {/* Scroll indicator */}
-      <motion.div 
+      {/* <motion.div 
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -317,7 +317,7 @@ export function HeroSection() {
       >
         <motion.button
           onClick={scrollToNext}
-          className="flex flex-col items-center text-gray-300 hover:text-teal-400 transition-colors group backdrop-blur-sm bg-white/10 px-6 py-4 rounded-full border border-white/20"
+          className="flex flex-col items-center text-gray-300 hover:text-teal-400 transition-colors group backdrop-blur-sm bg-white/10 px-6 py-4 mt-20 rounded-full border border-white/20"
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
           whileHover={{ 
@@ -325,7 +325,7 @@ export function HeroSection() {
             backgroundColor: "rgba(20, 184, 166, 0.1)"
           }}
         >
-          <span className="text-sm mb-2 group-hover:text-teal-300">Scroll to explore</span>
+          <span className="text-sm mb-2  group-hover:text-teal-300">Scroll to explore</span>
           <motion.div
             animate={{ 
               y: [0, 5, 0],
@@ -336,7 +336,7 @@ export function HeroSection() {
             <ChevronDown size={24} className="group-hover:text-teal-300" />
           </motion.div>
         </motion.button>
-      </motion.div>
+      </motion.div> */}
     </section>
   )
 }
