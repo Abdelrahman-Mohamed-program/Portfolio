@@ -28,7 +28,7 @@ export function EducationSection() {
       institution: "Ain-Shams University",
       details: "GPA 3.37",
       description: "Relevant coursework: Front-end (HTML, CSS, JS, Bootstrap),DS C++, Java OOP, C++",
-      year: "2020-2024",
+      year: "2023-2027",
       gradient: "from-blue-500 to-purple-500",
       bgGradient: "from-blue-500/20 to-purple-500/20"
     }, {
