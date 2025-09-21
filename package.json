@@ -2,6 +2,9 @@
       "name": "Personal Portfolio Website Design",
       "version": "0.1.0",
       "private": true,
+      "engines": {
+    "node": "20.x"
+  },
       "dependencies": {
             "@emailjs/browser": "^4.4.1",
             "@radix-ui/react-accordion": "^1.2.3",
