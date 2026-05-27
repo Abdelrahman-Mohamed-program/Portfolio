@@ -21,30 +21,29 @@ export function AboutSection() {
 
     return () => observer.disconnect()
   }, [])
-
-  const features = [
-    {
-      icon: <Code size={28} />,
-      title: "Programming",
-      description: "Full-stack development with modern technologies",
-      gradient: "from-blue-500 to-cyan-500",
-      delay: 0
-    },
-    {
-      icon: <Palette size={28} />,
-      title: "Design",
-      description: "Clean, user-centered design principles",
-      gradient: "from-purple-500 to-pink-500",
-      delay: 0.1
-    },
-    {
-      icon: <Brain size={28} />,
-      title: "Problem Solving",
-      description: "Critical thinking and innovative solutions",
-      gradient: "from-orange-500 to-red-500",
-      delay: 0.2
-    }
-  ]
+const features = [
+  {
+    icon: <Code size={28} />,
+    title: "Backend Architecture",
+    description: "Designing Scalable APIs, data models, and authentication systems",
+    gradient: "from-blue-500 to-cyan-500",
+    delay: 0
+  },
+  {
+    icon: <Palette size={28} />,
+    title: "Design",
+    description: "Clean, user-centered design principles",
+    gradient: "from-purple-500 to-pink-500",
+    delay: 0.1
+  },
+  {
+    icon: <Brain size={28} />,
+    title: "Problem Solving",
+    description: "Critical thinking and innovative solutions",
+    gradient: "from-orange-500 to-red-500",
+    delay: 0.2
+  }
+]
 
   return (
     <section ref={sectionRef} id="about" className="relative py-24 bg-gradient-to-br from-gray-900 via-gray-800 to-black overflow-hidden">
@@ -171,7 +170,7 @@ export function AboutSection() {
                 animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{ duration: 0.6, delay: 0.8 }}
               >
-                I am a MERN Stack Developer with strong foundations in computer science and proven experience building full-stack projects. I focus on delivering scalable, secure, and user-friendly applications.
+                I'm a Full-Stack Developer and co-founder of Masr360, a gamified tourism platform currently in development. I've built and shipped real products — from a client website delivered in 3 days to deploying a full platform on cloud infrastructure for a live competition.
               </motion.p>
               <motion.p 
                 className="text-xl text-gray-300 leading-relaxed"
