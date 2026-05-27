@@ -1,5 +1,6 @@
 import { Phone, Mail, MapPin, Linkedin, Send, CheckCircle, Star, Zap } from "lucide-react"
 import { motion } from "motion/react"
+import { Server } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
 import emailjs from "@emailjs/browser";
 export function ContactSection() {
@@ -43,7 +44,7 @@ export function ContactSection() {
     console.log('Form submitted:', formData)
         emailjs
       .send(
-        "service_o6yqe6e", // replace with your EmailJS service ID
+        "service_yzqs24s", // replace with your EmailJS service ID
         "template_k36yfsg", // replace with your EmailJS template ID
         formData,
         "q_25ZpYd9FwJarE9j" // replace with your EmailJS public key
@@ -98,24 +99,26 @@ export function ContactSection() {
     }
   ]
 
-  const benefits = [
-    {
-      icon: <CheckCircle className="w-5 h-5" />,
-      text: "Clean, maintainable code"
-    },
-    {
-      icon: <Star className="w-5 h-5" />,
-      text: "Responsive, mobile-first design"
-    },
-    {
-      icon: <Zap className="w-5 h-5" />,
-      text: "Fast communication and delivery"
-    },
-    {
-      icon: <CheckCircle className="w-5 h-5" />,
-      text: "Ongoing support and maintenance"
-    }
-  ]
+
+const benefits = [
+  {
+    icon: <CheckCircle className="w-5 h-5" />,
+    text: "Clean, documented, maintainable code"
+  },
+  {
+    icon: <Server className="w-5 h-5" />,
+    text: "Production-ready backend systems"
+  },
+  {
+    icon: <Star className="w-5 h-5" />,
+    text: "Responsive, mobile-first design"
+  },
+  {
+    icon: <Zap className="w-5 h-5" />,
+    text: "Fast communication, delivery & ongoing support"
+  }
+]
+ 
 
   return (
     <section ref={sectionRef} id="contact" className="relative py-24 bg-gradient-to-br from-gray-900 via-gray-800 to-black overflow-hidden">
