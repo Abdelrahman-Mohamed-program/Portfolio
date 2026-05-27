@@ -25,13 +25,14 @@ export function EducationSection() {
     {
       icon: <GraduationCap size={28} />,
       title: "BSc Computer Science",
-      institution: "Ain-Shams University",
-      details: "GPA 3.37",
-      description: "Relevant coursework: Front-end (HTML, CSS, JS, Bootstrap),DS C++, Java OOP, C++",
-      year: "2020-2024",
+      institution: "Ain Shams University",
+      details: "In Progress",
+      description: "Relevant coursework: Data Structures (C++), Java OOP, Front-end Development, Computer Graphics & Visualization, Database Systems",
+      year: "2022–Present",
       gradient: "from-blue-500 to-purple-500",
       bgGradient: "from-blue-500/20 to-purple-500/20"
-    }, {
+    },
+    {
       icon: <BookOpen size={28} />,
       title: "React Frontend Web Development",
       institution: "DEPI (Digital Egypt Pioneers Initiative)",
@@ -51,7 +52,6 @@ export function EducationSection() {
       gradient: "from-red-500 to-pink-500",
       bgGradient: "from-red-500/20 to-pink-500/20"
     }
-   
   ]
 
   return (
