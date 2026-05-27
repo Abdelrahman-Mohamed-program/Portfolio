@@ -246,12 +246,8 @@ export function ProjectsSection() {
                   </div>
                 )}
                 
-                {/* DESKTOP: hidden, appears on hover — original behavior */}
-                <motion.div 
-                  className="absolute inset-0 hidden md:flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  initial={{ scale: 0.8 }}
-                  whileHover={{ scale: 1 }}
-                >
+                {/* DESKTOP: hidden, appears on hover */}
+                <div className="absolute inset-0 hidden md:flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="flex space-x-4">
                     {project.live && (
                       <motion.a
@@ -293,33 +289,35 @@ export function ProjectsSection() {
                       </motion.a>
                     )}
                   </div>
-                </motion.div>
-
-                {/* MOBILE: always visible at bottom of image */}
-                <div className="absolute bottom-4 left-0 right-0 flex md:hidden items-center justify-center gap-3">
-                  {project.live && (
-                    <a href={project.live} target="_blank" rel="noopener noreferrer"
-                      className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-teal-500 to-blue-600 text-white rounded-lg shadow-lg text-sm">
-                      Live <ExternalLink size={14} />
-                    </a>
-                  )}
-                  {project.code && (
-                    <a href={project.code} target="_blank" rel="noopener noreferrer"
-                      className="flex items-center gap-2 px-4 py-2 bg-gray-800/90 border border-gray-600 text-gray-200 rounded-lg shadow-lg text-sm">
-                      Code <Github size={14} />
-                    </a>
-                  )}
-                  {project.drive && (
-                    <a href={project.drive} target="_blank" rel="noopener noreferrer"
-                      className="flex items-center gap-2 px-4 py-2 bg-gray-800/90 border border-gray-600 text-gray-200 rounded-lg shadow-lg text-sm">
-                      Preview <FolderOpen size={14} />
-                    </a>
-                  )}
                 </div>
+
               </div>
               
               {/* Content */}
               <div className="p-8">
+                {/* MOBILE: always visible buttons */}
+                {(project.live || project.code || project.drive) && (
+                  <div className="flex md:hidden flex-wrap gap-3 mb-6">
+                    {project.live && (
+                      <a href={project.live} target="_blank" rel="noopener noreferrer"
+                        className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-teal-500 to-blue-600 text-white rounded-lg shadow-lg text-sm">
+                        Live <ExternalLink size={14} />
+                      </a>
+                    )}
+                    {project.code && (
+                      <a href={project.code} target="_blank" rel="noopener noreferrer"
+                        className="flex items-center gap-2 px-4 py-2 bg-gray-800 border border-gray-600 text-gray-200 rounded-lg shadow-lg text-sm">
+                        Code <Github size={14} />
+                      </a>
+                    )}
+                    {project.drive && (
+                      <a href={project.drive} target="_blank" rel="noopener noreferrer"
+                        className="flex items-center gap-2 px-4 py-2 bg-gray-800 border border-gray-600 text-gray-200 rounded-lg shadow-lg text-sm">
+                        Preview <FolderOpen size={14} />
+                      </a>
+                    )}
+                  </div>
+                )}
                 <h3 className="text-2xl text-white mb-4 group-hover:text-teal-300 transition-colors duration-300">
                   {project.title}
                 </h3>
