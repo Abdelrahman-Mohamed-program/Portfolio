@@ -1,11 +1,12 @@
-import { ExternalLink, Github, Code, Smartphone, Globe, BarChart3, Link } from "lucide-react"
+import { ExternalLink, Github, Code, Globe, BarChart3, FolderOpen } from "lucide-react"
 import { ImageWithFallback } from "./figma/ImageWithFallback"
 import { motion } from "motion/react"
 import { JSX, useEffect, useRef, useState } from "react"
 import travling from "../assets/travling.png"
 import social from "../assets/social.png"
 import mango from "../assets/mango.png"
-import personal from "../assets/personal.png"
+const  m360 =  "https://res.cloudinary.com/dwh6drlr9/image/upload/v1779833116/masr360_lpzwy9.jpg";
+
 import { 
   SiReact, 
   SiNodedotjs, 
@@ -72,50 +73,60 @@ export function ProjectsSection() {
       "Git": <SiGit className="w-4 h-4 text-orange-600" />,
       "Vercel": <SiVercel className="w-4 h-4 text-white" />,
       "Netlify": <SiNetlify className="w-4 h-4 text-teal-400" />,
-      "AWS": <Cloud className="w-4 h-4 text-orange-400" />
+      "Cloud": <Cloud className="w-4 h-4 text-orange-400" />
     }
     return iconMap[tech] || <Code className="w-4 h-4 text-gray-400" />
   }
 
   const projects = [
-     {
+    {
+      title: "Masr360 — Gamified Tourism Platform",
+      description: "As a co-founder and backend developer of a tourism startup, built the backend from scratch and led its core design and development. Delivered scalable APIs, handled authentication and data management, and deployed the system to production. Ranked Top 20 in North Africa at the Spark Infinity Huawei Developer Competition.",
+      technologies: ["Node.js", "Express", "MongoDB", "Cloud"],
+      live: "https://www.m360travel.com",
+      image: m360,
+      category: "Full-Stack",
+      icon: <Globe className="w-6 h-6" />,
+      badge: " Top 20 — Huawei Competition",
+      code: null,
+      drive: null
+    },
+    {
       title: "Mango Business Website",
-      description: "Developed a responsive, user-friendly Mango website in just 3 days as requested by the client, enhancing product visibility, boosting customer engagement, and supporting their business needs.",
+      description: "Delivered a responsive, production-ready website for a mango business client within 72 hours. Enhanced product visibility and customer engagement based on direct client requirements.",
       technologies: ["React", "CSS3", "Bootstrap", "JavaScript"],
-      live:"https://amaniango.netlify.app/",
+      live: "https://amaniango.netlify.app/",
       image: mango,
       category: "Frontend",
-      icon: <Code className="w-6 h-6" />
+      icon: <Code className="w-6 h-6" />,
+      badge: null,
+      code: null,
+      drive: null
     },
     {
       title: "Social Media Dashboard",
-      description: "Designed and developed a comprehensive dashboard for businesses to track social media performance across multiple platforms.",
+      description: "Designed and developed a full-stack dashboard for businesses to track social media performance across multiple platforms with real-time data visualization.",
       technologies: ["React", "Bootstrap", "Node.js", "Express", "MongoDB"],
       image: social,
-      code:"https://github.com/Abdelrahman-Mohamed-program/Social-Media-Dashboard",
-
+      code: "https://github.com/Abdelrahman-Mohamed-program/Social-Media-Dashboard",
+      drive: "https://drive.google.com/drive/folders/16-5UsMnkd9dz9_7E4Moy8o40s8fb6qj2?hl=ar",
       category: "Full-Stack",
-      icon: <BarChart3 className="w-6 h-6" />
+      icon: <BarChart3 className="w-6 h-6" />,
+      badge: null,
+      live: null
     },
     {
-      title: "Travling system",
-      description: "Developed a backend system for a traveling platform with user management, bookings, destinations, and secure authentication/authorization ",
+      title: "Travel Booking System",
+      description: "Built a complete backend system for a travel platform including user management, destination browsing, booking flow, and secure JWT authentication and authorization.",
       technologies: ["Node.js", "Express", "MongoDB"],
-      image:travling,
+      image: travling,
+      code: "https://github.com/Abdelrahman-Mohamed-program/Tavelsta",
+      drive: "https://drive.google.com/drive/folders/1L8KGeLd0AHeB02qlRxczXsYVxp24prHw?hl=ar",
       category: "Full-Stack",
-      code:"https://github.com/Abdelrahman-Mohamed-program/Tavelsta",
-      icon: <Globe className="w-6 h-6" />
+      icon: <Globe className="w-6 h-6" />,
+      badge: null,
+      live: null
     },
-    {
-      title: "Productivity Life Planner App (under development) ",
-      description: "Created an intuitive planning tool to help users organize daily tasks, set goals, and track their productivity over time.",
-      technologies: ["React","JavaScript","TailwindCss"],
-      live:"https://personal-life.netlify.app/",code:"https://github.com/Abdelrahman-Mohamed-program/personal-life",
-      image:personal,
-      category: "Frontend",
-      icon: <Smartphone className="w-6 h-6" />
-    },
-   
   ]
 
   return (
@@ -215,35 +226,96 @@ export function ProjectsSection() {
                     <span className="ml-2">{project.category}</span>
                   </span>
                 </div>
+
+                {/* Competition badge for Masr360 */}
+                {project.badge && (
+                  <div className="absolute top-4 right-4">
+                    <motion.span 
+                      className="inline-flex items-center px-3 py-1 bg-gradient-to-r from-orange-500/80 to-yellow-500/80 backdrop-blur-sm text-white rounded-full text-xs border border-orange-400/50 font-medium"
+                      animate={{ 
+                        boxShadow: [
+                          "0 0 8px rgba(251, 146, 60, 0.4)",
+                          "0 0 16px rgba(251, 146, 60, 0.7)",
+                          "0 0 8px rgba(251, 146, 60, 0.4)"
+                        ]
+                      }}
+                      transition={{ duration: 2, repeat: Infinity }}
+                    >
+                      {project.badge}
+                    </motion.span>
+                  </div>
+                )}
                 
-                {/* Hover overlay with buttons */}
+                {/* DESKTOP: hidden, appears on hover — original behavior */}
                 <motion.div 
-                  className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  className="absolute inset-0 hidden md:flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                   initial={{ scale: 0.8 }}
                   whileHover={{ scale: 1 }}
                 >
                   <div className="flex space-x-4">
-                    {project.live&& <motion.button 
-                      className="flex items-center px-4 py-2 bg-gradient-to-r from-teal-500 to-blue-600 text-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
-                      whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(20, 184, 166, 0.4)" }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                     <span className="mr-2">Live</span>  <a href={project.live}> <ExternalLink size={16} className="mr-2" /></a>
-                      
-                    </motion.button>}
-                   {project.code&&              <motion.button 
-                      className="flex items-center px-4 py-2 bg-gray-800/80 border border-gray-600 text-gray-200 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 backdrop-blur-sm"
-                      whileHover={{ scale: 1.05, borderColor: "rgb(20, 184, 166)" }}
-                      whileTap={{ scale: 0.95 }}
-                 
-                    >
-                      <span className="mr-2">Code</span> <a href={project.code} className="w-[100%] h-[100%]">     <Github size={16} className="mr-2" /></a>
-                 
-                          
-                    </motion.button>}
-      
+                    {project.live && (
+                      <motion.a
+                        href={project.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center px-4 py-2 bg-gradient-to-r from-teal-500 to-blue-600 text-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
+                        whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(20, 184, 166, 0.4)" }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        <span className="mr-2">Live</span>
+                        <ExternalLink size={16} />
+                      </motion.a>
+                    )}
+                    {project.code && (
+                      <motion.a
+                        href={project.code}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center px-4 py-2 bg-gray-800/80 border border-gray-600 text-gray-200 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 backdrop-blur-sm"
+                        whileHover={{ scale: 1.05, borderColor: "rgb(20, 184, 166)" }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        <span className="mr-2">Code</span>
+                        <Github size={16} />
+                      </motion.a>
+                    )}
+                    {project.drive && (
+                      <motion.a
+                        href={project.drive}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center px-4 py-2 bg-gray-800/80 border border-gray-600 text-gray-200 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 backdrop-blur-sm"
+                        whileHover={{ scale: 1.05, borderColor: "rgb(250, 204, 21)" }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        <span className="mr-2">Preview</span>
+                        <FolderOpen size={16} />
+                      </motion.a>
+                    )}
                   </div>
                 </motion.div>
+
+                {/* MOBILE: always visible at bottom of image */}
+                <div className="absolute bottom-4 left-0 right-0 flex md:hidden items-center justify-center gap-3">
+                  {project.live && (
+                    <a href={project.live} target="_blank" rel="noopener noreferrer"
+                      className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-teal-500 to-blue-600 text-white rounded-lg shadow-lg text-sm">
+                      Live <ExternalLink size={14} />
+                    </a>
+                  )}
+                  {project.code && (
+                    <a href={project.code} target="_blank" rel="noopener noreferrer"
+                      className="flex items-center gap-2 px-4 py-2 bg-gray-800/90 border border-gray-600 text-gray-200 rounded-lg shadow-lg text-sm">
+                      Code <Github size={14} />
+                    </a>
+                  )}
+                  {project.drive && (
+                    <a href={project.drive} target="_blank" rel="noopener noreferrer"
+                      className="flex items-center gap-2 px-4 py-2 bg-gray-800/90 border border-gray-600 text-gray-200 rounded-lg shadow-lg text-sm">
+                      Preview <FolderOpen size={14} />
+                    </a>
+                  )}
+                </div>
               </div>
               
               {/* Content */}
@@ -299,7 +371,7 @@ export function ProjectsSection() {
             whileTap={{ scale: 0.95 }}
           >
             <Github size={24} className="mr-3 group-hover:rotate-12 transition-transform duration-300" />
-            <a href={"https://github.com/Abdelrahman-Mohamed-program"}>Explore My GitHub</a>
+            <a href="https://github.com/Abdelrahman-Mohamed-program" target="_blank" rel="noopener noreferrer">Explore My GitHub</a>
             <motion.div
               className="ml-3 w-2 h-2 bg-teal-400 rounded-full"
               animate={{ scale: [1, 1.5, 1] }}
