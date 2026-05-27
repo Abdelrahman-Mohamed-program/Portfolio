@@ -1,8 +1,5 @@
 import { Code, Globe, Users, Brain, Settings, Lightbulb, Zap, Server, Cloud, Network, Activity, Globe2 } from "lucide-react"
-import { motion } from "motion/react";
-import { SiLinux } from "react-icons/si";
-import { VscCode } from "react-icons/vsc"
-import {  SiPostman, SiDocker } from "react-icons/si"
+import { motion } from "motion/react"
 import { JSX, useEffect, useRef, useState } from "react"
 import { 
   SiReact, 
@@ -50,6 +47,7 @@ export function SkillsSection() {
     { name: "TypeScript", level: 65, color: "from-blue-600 to-blue-800", icon: <SiTypescript className="w-4 h-4 text-blue-600" /> },
     { name: "HTML5", level: 90, color: "from-orange-500 to-red-500", icon: <SiHtml5 className="w-4 h-4 text-orange-500" /> },
     { name: "CSS3", level: 90, color: "from-blue-500 to-purple-500", icon: <SiCss3 className="w-4 h-4 text-blue-500" /> },
+    { name: "Bootstrap", level: 85, color: "from-purple-600 to-indigo-600", icon: <SiBootstrap className="w-4 h-4 text-purple-500" /> }
   ]
 
   const programmingLanguages = [
@@ -59,14 +57,15 @@ export function SkillsSection() {
     { name: "C#", level: 50, color: "from-purple-600 to-indigo-700", icon: <Code className="w-4 h-4 text-purple-600" /> }
   ]
 
-const tools = [
-  { name: "Git", icon: <SiGit size={24} />, gradient: "from-orange-500 to-red-500" },
-  { name: "GitHub", icon: <SiGithub size={24} />, gradient: "from-gray-700 to-gray-900" },
-  { name: "VS Code", icon: <VscCode size={24} />, gradient: "from-blue-500 to-cyan-500" },
-  { name: "Postman", icon: <SiPostman size={24} />, gradient: "from-orange-500 to-red-500" },
-  { name: "MongoDB Compass", icon: <SiMongodb size={24} />, gradient: "from-green-500 to-emerald-600" },
-  { name: "Linux", icon: <SiLinux size={24} />, gradient: "from-yellow-500 to-gray-700" }
-]
+  const tools = [
+    { name: "Git", icon: <SiGit size={24} />, gradient: "from-orange-500 to-red-500" },
+    { name: "GitHub", icon: <SiGithub size={24} />, gradient: "from-gray-700 to-gray-900" },
+    { name: "VS Code", icon: <Code size={24} />, gradient: "from-blue-500 to-purple-500" },
+    { name: "Postman", icon: <Code size={24} />, gradient: "from-orange-400 to-orange-600" },
+    { name: "MongoDB Compass", icon: <SiMongodb size={24} />, gradient: "from-green-500 to-emerald-600" },
+    { name: "Nginx", icon: <Globe size={24} />, gradient: "from-green-600 to-teal-600" }
+  ]
+
   const softSkills = [
     { name: "Teamwork", icon: <Users size={24} />, gradient: "from-pink-500 to-rose-500" },
     { name: "Self-learning", icon: <Brain size={24} />, gradient: "from-purple-500 to-indigo-500" },
@@ -74,13 +73,13 @@ const tools = [
     { name: "Critical Thinking", icon: <Lightbulb size={24} />, gradient: "from-yellow-500 to-orange-500" }
   ]
 
-
   const devopsSkills = [
-    { name: "Cloud Deployment", icon: <Cloud size={26} />, gradient: "from-blue-500 to-cyan-500" },
-    { name: "Nginx", icon: <Network size={26} />, gradient: "from-green-500 to-teal-600" },
-    { name: "PM2", icon: <Activity size={26} />, gradient: "from-yellow-500 to-orange-500" },
-    { name: "Domain & DNS", icon: <Globe2 size={26} />, gradient: "from-purple-500 to-indigo-500" }
+    { name: "Cloud Deployment", icon: <Cloud size={18} />, gradient: "from-blue-500 to-cyan-500" },
+    { name: "Nginx", icon: <Network size={18} />, gradient: "from-green-500 to-teal-600" },
+    { name: "PM2", icon: <Activity size={18} />, gradient: "from-yellow-500 to-orange-500" },
+    { name: "Domain & DNS", icon: <Globe2 size={18} />, gradient: "from-purple-500 to-indigo-500" }
   ]
+
   const SkillBar = ({ name, level, color, delay, icon }: { name: string; level: number; color: string; delay: number; icon?: JSX.Element }) => (
     <motion.div 
       className="mb-6"
@@ -259,23 +258,24 @@ const tools = [
               <p className="text-gray-400 text-sm mt-1">Production infrastructure experience from real competition stakes</p>
             </div>
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3">
+          <div className="grid grid-cols-2 gap-8">
             {devopsSkills.map((skill, index) => (
               <motion.div
                 key={index}
-                className="group flex flex-col items-center justify-center p-4 bg-gray-700/30 rounded-2xl border border-gray-600/20 hover:bg-gray-600/30 transition-all duration-300 text-center"
+                className="group flex flex-col items-center justify-center bg-gray-700/30 rounded-2xl border border-gray-600/20 hover:bg-gray-600/30 transition-all duration-300 text-center"
+                style={{ minHeight: "110px", padding: "20px 16px" }}
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={isVisible ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-                transition={{ duration: 0.5, delay: 0.9 + index * 0.06 }}
-                whileHover={{ scale: 1.08, y: -4, boxShadow: "0 8px 24px rgba(0,0,0,0.3)" }}
+                transition={{ duration: 0.5, delay: 0.9 + index * 0.08 }}
+                whileHover={{ scale: 1.04, y: -5, boxShadow: "0 12px 30px rgba(0,0,0,0.4)" }}
               >
                 <motion.div
-                  className={`w-11 h-11 bg-gradient-to-r ${skill.gradient} rounded-xl flex items-center justify-center mb-3 shadow-md`}
-                  whileHover={{ rotate: 5 }}
+                  className={`w-10 h-10 bg-gradient-to-r ${skill.gradient} rounded-xl flex items-center justify-center mb-3 shadow-lg`}
+                  whileHover={{ scale: 1.1, rotate: 5 }}
                 >
                   <div className="text-white">{skill.icon}</div>
                 </motion.div>
-                <span className="text-white text-xs font-medium leading-tight group-hover:text-teal-300 transition-colors">
+                <span className="text-white text-sm font-medium leading-snug group-hover:text-teal-300 transition-colors">
                   {skill.name}
                 </span>
               </motion.div>
