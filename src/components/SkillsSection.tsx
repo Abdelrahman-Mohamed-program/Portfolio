@@ -46,8 +46,7 @@ export function SkillsSection() {
     { name: "Tailwind", level: 85, color: "from-purple-600 to-indigo-600", icon: <SiTailwindcss className="w-4 h-4 text-blue-500" /> },
     { name: "TypeScript", level: 65, color: "from-blue-600 to-blue-800", icon: <SiTypescript className="w-4 h-4 text-blue-600" /> },
     { name: "HTML5", level: 90, color: "from-orange-500 to-red-500", icon: <SiHtml5 className="w-4 h-4 text-orange-500" /> },
-    { name: "CSS3", level: 90, color: "from-blue-500 to-purple-500", icon: <SiCss3 className="w-4 h-4 text-blue-500" /> },
-    { name: "Bootstrap", level: 85, color: "from-purple-600 to-indigo-600", icon: <SiBootstrap className="w-4 h-4 text-purple-500" /> }
+    { name: "CSS3", level: 90, color: "from-blue-500 to-purple-500", icon: <SiCss3 className="w-4 h-4 text-blue-500" /> }
   ]
 
   const programmingLanguages = [
