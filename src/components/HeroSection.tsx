@@ -1,8 +1,9 @@
-import { ArrowRight, ChevronDown, Sparkles, Code, Rocket } from "lucide-react"
+import { ArrowRight, ChevronDown, Sparkles, Code, Rocket, Trophy } from "lucide-react"
 import { ImageWithFallback } from "./figma/ImageWithFallback"
 import { motion } from "motion/react"
 import { useEffect, useState } from "react"
 import me from "../assets/me.jpeg"
+
 export function HeroSection() {
   const [isVisible, setIsVisible] = useState(false)
   
@@ -122,9 +123,32 @@ export function HeroSection() {
                     WebkitTextFillColor: "transparent"
                   }}
                 >
-                  MERN Stack Developer
+                  Full-Stack Developer & Co-founder
                 </motion.span>
               </motion.h2>
+
+              {/* Huawei Competition Badge */}
+              <motion.div
+                className="flex justify-center lg:justify-start"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.9 }}
+              >
+                <motion.div
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-orange-500/20 to-yellow-500/20 border border-orange-400/40 rounded-full backdrop-blur-sm"
+                  animate={{ 
+                    boxShadow: [
+                      "0 0 10px rgba(251, 146, 60, 0.2)",
+                      "0 0 20px rgba(251, 146, 60, 0.4)",
+                      "0 0 10px rgba(251, 146, 60, 0.2)"
+                    ]
+                  }}
+                  transition={{ duration: 2.5, repeat: Infinity }}
+                >
+                  <Trophy className="w-4 h-4 text-yellow-400" />
+                  <span className="text-sm text-orange-300 font-medium text-gray-300">Huawei Dev Competition — Top 20, North Africa</span>
+                </motion.div>
+              </motion.div>
               
               <motion.p 
                 className="text-xl text-gray-300 max-w-lg mx-auto lg:mx-0 leading-relaxed"
@@ -248,7 +272,7 @@ export function HeroSection() {
                 style={{ perspective: "1000px" }}
               >
                 <ImageWithFallback 
-                  src = {me}
+                  src={me}
                   alt="Abdelrahman Mohamed - Professional Developer"
                   className="rounded-3xl shadow-2xl w-full h-auto border border-white/20"
                 />
@@ -307,36 +331,6 @@ export function HeroSection() {
           </motion.div>
         </div>
       </div>
-      
-      {/* Scroll indicator */}
-      {/* <motion.div 
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 1.5 }}
-      >
-        <motion.button
-          onClick={scrollToNext}
-          className="flex flex-col items-center text-gray-300 hover:text-teal-400 transition-colors group backdrop-blur-sm bg-white/10 px-6 py-4 mt-20 rounded-full border border-white/20"
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          whileHover={{ 
-            scale: 1.1,
-            backgroundColor: "rgba(20, 184, 166, 0.1)"
-          }}
-        >
-          <span className="text-sm mb-2  group-hover:text-teal-300">Scroll to explore</span>
-          <motion.div
-            animate={{ 
-              y: [0, 5, 0],
-              opacity: [0.5, 1, 0.5]
-            }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-          >
-            <ChevronDown size={24} className="group-hover:text-teal-300" />
-          </motion.div>
-        </motion.button>
-      </motion.div> */}
     </section>
   )
 }
