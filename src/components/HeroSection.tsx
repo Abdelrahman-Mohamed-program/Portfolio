@@ -2,7 +2,7 @@ import { ArrowRight, ChevronDown, Sparkles, Code, Rocket, Trophy } from "lucide-
 import { ImageWithFallback } from "./figma/ImageWithFallback"
 import { motion } from "motion/react"
 import { useEffect, useState } from "react"
-import me from "../assets/me.jpeg"
+import me from "../assets/me.png"
 
 export function HeroSection() {
   const [isVisible, setIsVisible] = useState(false)
