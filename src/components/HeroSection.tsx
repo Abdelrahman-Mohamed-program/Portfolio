@@ -5,6 +5,54 @@ import { HeroImage } from "./figma/OptimizedImage";
 import { SectionBackground } from "./ui/SectionBackground";
 import { useReduceAnimations } from "../hooks/useMediaQuery";
 
+// Cloudinary optimized URL for hero image - auto format, quality, sized for hero dimensions
+const HERO_IMAGE_URL = "https://res.cloudinary.com/dwh6drlr9/image/upload/w_800,h_1000,c_fill,q_auto,f_auto/v1785843811/me--8AWmYK6_gfjrmc.png";
+
+// Remote image component for Cloudinary URLs with blur placeholder
+function RemoteHeroImage({ alt }: { alt: string }) {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  return (
+    <picture>
+      <img
+        src={HERO_IMAGE_URL}
+        alt={alt}
+        loading="eager"
+        fetchPriority="high"
+        style={{
+          width: '100%',
+          height: '100%',
+          display: 'block',
+          opacity: isLoaded ? 1 : 0,
+          transition: 'opacity 300ms ease-out',
+          objectFit: 'cover',
+        }}
+        onLoad={() => setIsLoaded(true)}
+      />
+      {/* Blur placeholder - low quality version */}
+      {!isLoaded && (
+        <img
+          src="https://res.cloudinary.com/dwh6drlr9/image/upload/w_20,h_25,c_fill,q_10,f_auto/v1785843811/me--8AWmYK6_gfjrmc.png"
+          alt=""
+          aria-hidden="true"
+          style={{
+            position: 'absolute',
+            inset: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            filter: 'blur(20px)',
+            transform: 'scale(1.1)',
+            opacity: isLoaded ? 0 : 1,
+            transition: 'opacity 300ms ease-out',
+            pointerEvents: 'none',
+          }}
+        />
+      )}
+    </picture>
+  );
+}
+
 export function HeroSection() {
   const [isVisible, setIsVisible] = useState(false);
   const reduceAnimations = useReduceAnimations();
@@ -230,14 +278,14 @@ export function HeroSection() {
                 </>
               )}
 
-              {/* Main image - using OptimizedImage */}
+              {/* Main image - using optimized Cloudinary URL */}
               <motion.div
                 className="relative z-10"
                 whileHover={reduceAnimations ? {} : { scale: 1.05, rotateY: 5, rotateX: 5 }}
                 transition={{ duration: 0.3 }}
                 style={{ perspective: "1000px" }}
               >
-                <HeroImage src="me" alt="Abdelrahman Mohamed - Professional Developer" />
+                <RemoteHeroImage alt="Abdelrahman Mohamed - Professional Developer" />
               </motion.div>
 
               {/* Floating tech icons — reduced from 4 to 2 on mobile */}
