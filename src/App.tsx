@@ -11,9 +11,11 @@ import { SectionBackground } from "./components/ui/SectionBackground"
 import { motion } from "motion/react"
 import { ArrowUp, Heart } from "lucide-react"
 import { useState, useEffect } from "react"
+import { useReduceAnimations } from "./hooks/useMediaQuery"
 
 export default function App() {
   const [showScrollTop, setShowScrollTop] = useState(false)
+  const reduceAnimations = useReduceAnimations()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -92,7 +94,7 @@ export default function App() {
               MERN Stack Developer passionate about creating exceptional digital experiences
             </motion.p>
             
-            <motion.div 
+            <motion.div
               className="flex items-center justify-center space-x-2 text-gray-400 mb-8"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -100,12 +102,16 @@ export default function App() {
               viewport={{ once: true }}
             >
               <span>Made with</span>
-              <motion.div
-                animate={{ scale: [1, 1.2, 1] }}
-                transition={{ duration: 1, repeat: Infinity }}
-              >
+              {!reduceAnimations ? (
+                <motion.div
+                  animate={{ scale: [1, 1.2, 1] }}
+                  transition={{ duration: 1, repeat: Infinity }}
+                >
+                  <Heart className="w-4 h-4 text-red-400 fill-current" />
+                </motion.div>
+              ) : (
                 <Heart className="w-4 h-4 text-red-400 fill-current" />
-              </motion.div>
+              )}
               <span>using React & TypeScript</span>
             </motion.div>
             

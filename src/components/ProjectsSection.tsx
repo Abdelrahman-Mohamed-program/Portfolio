@@ -25,6 +25,7 @@ import {
   SiNetlify,
 } from "react-icons/si"
 import { Cloud } from "lucide-react"
+import { useReduceAnimations } from "../hooks/useMediaQuery"
 
 const m360 = "https://res.cloudinary.com/dwh6drlr9/image/upload/v1779833116/masr360_lpzwy9.jpg"
 
@@ -86,6 +87,7 @@ const projects = [
 export function ProjectsSection() {
   const [isVisible, setIsVisible] = useState(false)
   const sectionRef = useRef(null)
+  const reduceAnimations = useReduceAnimations()
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -202,7 +204,7 @@ export function ProjectsSection() {
               initial={{ opacity: 0, y: 50 }}
               animate={isVisible ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: index * 0.1 + 0.7 }}
-              whileHover={{
+              whileHover={reduceAnimations ? {} : {
                 y: -10,
                 scale: 1.02,
                 boxShadow: "0 25px 50px rgba(0,0,0,0.5), 0 0 30px rgba(20, 184, 166, 0.3)",
@@ -228,19 +230,25 @@ export function ProjectsSection() {
                   {/* Competition badge for Masr360 */}
                   {project.badge && (
                     <div className="flex-shrink-0">
-                      <motion.span
-                        className="inline-flex items-center px-3 py-1 md:px-3 md:py-1 bg-gradient-to-r from-orange-500/80 to-yellow-500/80 backdrop-blur-sm text-white rounded-full text-xs md:text-xs border border-orange-400/50 font-medium whitespace-nowrap max-w-[calc(100vw-8rem)] truncate"
-                        animate={{
-                          boxShadow: [
-                            "0 0 8px rgba(251, 146, 60, 0.4)",
-                            "0 0 16px rgba(251, 146, 60, 0.7)",
-                            "0 0 8px rgba(251, 146, 60, 0.4)",
-                          ],
-                        }}
-                        transition={{ duration: 2, repeat: Infinity }}
-                      >
-                        {project.badge}
-                      </motion.span>
+                      {!reduceAnimations ? (
+                        <motion.span
+                          className="inline-flex items-center px-3 py-1 md:px-3 md:py-1 bg-gradient-to-r from-orange-500/80 to-yellow-500/80 backdrop-blur-sm text-white rounded-full text-xs md:text-xs border border-orange-400/50 font-medium whitespace-nowrap max-w-[calc(100vw-8rem)] truncate"
+                          animate={{
+                            boxShadow: [
+                              "0 0 8px rgba(251, 146, 60, 0.4)",
+                              "0 0 16px rgba(251, 146, 60, 0.7)",
+                              "0 0 8px rgba(251, 146, 60, 0.4)",
+                            ],
+                          }}
+                          transition={{ duration: 2, repeat: Infinity }}
+                        >
+                          {project.badge}
+                        </motion.span>
+                      ) : (
+                        <span className="inline-flex items-center px-3 py-1 md:px-3 md:py-1 bg-gradient-to-r from-orange-500/80 to-yellow-500/80 backdrop-blur-sm text-white rounded-full text-xs md:text-xs border border-orange-400/50 font-medium whitespace-nowrap max-w-[calc(100vw-8rem)] truncate">
+                          {project.badge}
+                        </span>
+                      )}
                     </div>
                   )}
                 </div>
@@ -326,7 +334,7 @@ export function ProjectsSection() {
                     <motion.span
                       key={techIndex}
                       className="inline-flex items-center px-3 py-2 bg-gradient-to-r from-gray-700/50 to-gray-600/50 border border-gray-500/30 text-gray-200 rounded-xl text-sm backdrop-blur-sm hover:border-teal-400/50 transition-all duration-300"
-                      whileHover={{
+                      whileHover={reduceAnimations ? {} : {
                         scale: 1.1,
                         y: -2,
                         boxShadow: "0 4px 12px rgba(20, 184, 166, 0.2)",
@@ -365,11 +373,13 @@ export function ProjectsSection() {
           >
             <Github size={24} className="mr-3 group-hover:rotate-12 transition-transform duration-300" />
             <a href="https://github.com/Abdelrahman-Mohamed-program" target="_blank" rel="noopener noreferrer">Explore My GitHub</a>
-            <motion.div
-              className="ml-3 w-2 h-2 bg-teal-400 rounded-full"
-              animate={{ scale: [1, 1.5, 1] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            />
+            {!reduceAnimations && (
+              <motion.div
+                className="ml-3 w-2 h-2 bg-teal-400 rounded-full"
+                animate={{ scale: [1, 1.5, 1] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              />
+            )}
           </motion.button>
         </motion.div>
       </div>

@@ -3,9 +3,11 @@ import { motion } from "motion/react";
 import { useEffect, useState } from "react";
 import { HeroImage } from "./figma/OptimizedImage";
 import { SectionBackground } from "./ui/SectionBackground";
+import { useReduceAnimations } from "../hooks/useMediaQuery";
 
 export function HeroSection() {
   const [isVisible, setIsVisible] = useState(false);
+  const reduceAnimations = useReduceAnimations();
 
   useEffect(() => {
     setIsVisible(true);
@@ -46,7 +48,7 @@ export function HeroSection() {
               >
                 <motion.span
                   className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-teal-500/20 to-purple-500/20 border border-teal-300/30 rounded-full text-teal-300 text-sm mb-6 backdrop-blur-sm"
-                  animate={{ scale: [1, 1.05, 1] }}
+                  animate={reduceAnimations ? {} : { scale: [1, 1.05, 1] }}
                   transition={{ duration: 2, repeat: Infinity }}
                 >
                   <Sparkles className="w-4 h-4 mr-2" />
@@ -62,7 +64,7 @@ export function HeroSection() {
               >
                 <motion.span
                   className="block"
-                  animate={{
+                  animate={reduceAnimations ? {} : {
                     textShadow: [
                       "0 0 20px rgba(20, 184, 166, 0.5)",
                       "0 0 40px rgba(20, 184, 166, 0.8)",
@@ -83,7 +85,7 @@ export function HeroSection() {
                 transition={{ duration: 0.8, delay: 0.8 }}
               >
                 <motion.span
-                  animate={{
+                  animate={reduceAnimations ? {} : {
                     backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
                   }}
                   transition={{ duration: 4, repeat: Infinity }}
@@ -107,7 +109,7 @@ export function HeroSection() {
               >
                 <motion.div
                   className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-orange-500/20 to-yellow-500/20 border border-orange-400/40 rounded-full backdrop-blur-sm"
-                  animate={{
+                  animate={reduceAnimations ? {} : {
                     boxShadow: [
                       "0 0 10px rgba(251, 146, 60, 0.2)",
                       "0 0 20px rgba(251, 146, 60, 0.4)",
@@ -147,7 +149,7 @@ export function HeroSection() {
                   boxShadow: "0 0 30px rgba(20, 184, 166, 0.6)",
                 }}
                 whileTap={{ scale: 0.95 }}
-                animate={{
+                animate={reduceAnimations ? {} : {
                   boxShadow: [
                     "0 0 20px rgba(20, 184, 166, 0.3)",
                     "0 0 40px rgba(20, 184, 166, 0.5)",
@@ -163,7 +165,7 @@ export function HeroSection() {
                 </span>
                 <motion.div
                   className="absolute inset-0 bg-gradient-to-r from-teal-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity"
-                  animate={{
+                  animate={reduceAnimations ? {} : {
                     background: [
                       "linear-gradient(45deg, #14b8a6, #3b82f6)",
                       "linear-gradient(45deg, #3b82f6, #8b5cf6)",
@@ -189,7 +191,7 @@ export function HeroSection() {
                 Let's Connect
                 <motion.div
                   className="ml-3 w-3 h-3 bg-teal-400 rounded-full"
-                  animate={{ scale: [1, 1.5, 1], opacity: [1, 0.5, 1] }}
+                  animate={reduceAnimations ? {} : { scale: [1, 1.5, 1], opacity: [1, 0.5, 1] }}
                   transition={{ duration: 2, repeat: Infinity }}
                 />
               </motion.button>
@@ -205,29 +207,33 @@ export function HeroSection() {
           >
             <div className="relative w-full max-w-lg mx-auto">
               {/* Animated background glow */}
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-teal-400/40 via-blue-400/40 to-purple-400/40 rounded-3xl blur-3xl"
-                animate={{ rotate: [0, 360], scale: [1, 1.1, 1] }}
-                transition={{
-                  rotate: { duration: 20, repeat: Infinity, ease: "linear" },
-                  scale: { duration: 4, repeat: Infinity, ease: "easeInOut" },
-                }}
-              />
+              {!reduceAnimations && (
+                <>
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-teal-400/40 via-blue-400/40 to-purple-400/40 rounded-3xl blur-3xl"
+                    animate={{ rotate: [0, 360], scale: [1, 1.1, 1] }}
+                    transition={{
+                      rotate: { duration: 20, repeat: Infinity, ease: "linear" },
+                      scale: { duration: 4, repeat: Infinity, ease: "easeInOut" },
+                    }}
+                  />
 
-              {/* Secondary glow */}
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-l from-pink-400/30 via-cyan-400/30 to-indigo-400/30 rounded-3xl blur-2xl"
-                animate={{ rotate: [360, 0], scale: [0.8, 1.2, 0.8] }}
-                transition={{
-                  rotate: { duration: 15, repeat: Infinity, ease: "linear" },
-                  scale: { duration: 5, repeat: Infinity, ease: "easeInOut" },
-                }}
-              />
+                  {/* Secondary glow */}
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-l from-pink-400/30 via-cyan-400/30 to-indigo-400/30 rounded-3xl blur-2xl"
+                    animate={{ rotate: [360, 0], scale: [0.8, 1.2, 0.8] }}
+                    transition={{
+                      rotate: { duration: 15, repeat: Infinity, ease: "linear" },
+                      scale: { duration: 5, repeat: Infinity, ease: "easeInOut" },
+                    }}
+                  />
+                </>
+              )}
 
               {/* Main image - using OptimizedImage */}
               <motion.div
                 className="relative z-10"
-                whileHover={{ scale: 1.05, rotateY: 5, rotateX: 5 }}
+                whileHover={reduceAnimations ? {} : { scale: 1.05, rotateY: 5, rotateX: 5 }}
                 transition={{ duration: 0.3 }}
                 style={{ perspective: "1000px" }}
               >
@@ -235,23 +241,27 @@ export function HeroSection() {
               </motion.div>
 
               {/* Floating tech icons — reduced from 4 to 2 on mobile */}
-              <motion.div
-                className="absolute -top-6 -left-6 w-16 h-16 md:w-20 md:h-20 bg-gradient-to-r from-teal-400 to-cyan-400 rounded-2xl shadow-2xl flex items-center justify-center backdrop-blur-sm border border-white/20"
-                animate={{ y: [0, -15, 0], rotate: [0, 10, 0] }}
-                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                whileHover={{ scale: 1.1 }}
-              >
-                <Atom className="text-white text-2xl md:text-3xl" />
-              </motion.div>
+              {!reduceAnimations && (
+                <>
+                  <motion.div
+                    className="absolute -top-6 -left-6 w-16 h-16 md:w-20 md:h-20 bg-gradient-to-r from-teal-400 to-cyan-400 rounded-2xl shadow-2xl flex items-center justify-center backdrop-blur-sm border border-white/20"
+                    animate={{ y: [0, -15, 0], rotate: [0, 10, 0] }}
+                    transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                    whileHover={{ scale: 1.1 }}
+                  >
+                    <Atom className="text-white text-2xl md:text-3xl" />
+                  </motion.div>
 
-              <motion.div
-                className="absolute -bottom-6 -right-6 w-16 h-16 md:w-20 md:h-20 bg-gradient-to-r from-purple-400 to-pink-400 rounded-2xl shadow-2xl flex items-center justify-center backdrop-blur-sm border border-white/20"
-                animate={{ y: [0, 15, 0], rotate: [0, -10, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                whileHover={{ scale: 1.1 }}
-              >
-                <Rocket className="text-white text-2xl md:text-3xl" />
-              </motion.div>
+                  <motion.div
+                    className="absolute -bottom-6 -right-6 w-16 h-16 md:w-20 md:h-20 bg-gradient-to-r from-purple-400 to-pink-400 rounded-2xl shadow-2xl flex items-center justify-center backdrop-blur-sm border border-white/20"
+                    animate={{ y: [0, 15, 0], rotate: [0, -10, 0] }}
+                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                    whileHover={{ scale: 1.1 }}
+                  >
+                    <Rocket className="text-white text-2xl md:text-3xl" />
+                  </motion.div>
+                </>
+              )}
             </div>
           </motion.div>
         </div>

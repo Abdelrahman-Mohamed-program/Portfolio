@@ -4,6 +4,7 @@ import { motion } from "motion/react"
 import { Server } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
 import emailjs from "@emailjs/browser"
+import { useReduceAnimations } from "../hooks/useMediaQuery"
 
 export function ContactSection() {
   const [formData, setFormData] = useState({
@@ -15,6 +16,7 @@ export function ContactSection() {
   const [isVisible, setIsVisible] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const sectionRef = useRef(null)
+  const reduceAnimations = useReduceAnimations()
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -107,12 +109,13 @@ export function ContactSection() {
           transition={{ duration: 0.8 }}
         >
           <motion.span
-            className="inline-block px-4 py-2 bg-gradient-to-r from-teal-500/20 to-purple-500/20 border border-teal-300/30 rounded-full text-teal-300 text-sm mb-6"
+            className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-teal-500/20 to-purple-500/20 border border-teal-300/30 rounded-full text-teal-300 text-sm mb-6"
             initial={{ opacity: 0, y: 20 }}
             animate={isVisible ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            📧 Let's Connect
+            <Mail className="w-4 h-4 mr-2" />
+            Let's Connect
           </motion.span>
 
           <motion.h2
@@ -304,7 +307,7 @@ export function ContactSection() {
                 >
                   <motion.div
                     className="w-20 h-20 bg-gradient-to-r from-teal-400 to-green-400 rounded-full flex items-center justify-center mx-auto mb-6"
-                    animate={{ scale: [1, 1.1, 1] }}
+                    animate={reduceAnimations ? {} : { scale: [1, 1.1, 1] }}
                     transition={{ duration: 1, repeat: 2 }}
                   >
                     <CheckCircle className="w-10 h-10 text-white" />

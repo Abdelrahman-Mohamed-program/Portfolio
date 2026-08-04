@@ -2,10 +2,12 @@ import { Code, Palette, Brain, Sparkles, Star, Zap } from "lucide-react"
 import { ImageWithFallback } from "./figma/ImageWithFallback"
 import { motion } from "motion/react"
 import { useEffect, useRef, useState } from "react"
+import { useReduceAnimations } from "../hooks/useMediaQuery"
 
 export function AboutSection() {
   const [isVisible, setIsVisible] = useState(false)
   const sectionRef = useRef(null)
+  const reduceAnimations = useReduceAnimations()
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -52,16 +54,20 @@ const features = [
       <div className="absolute inset-0 bg-gradient-to-r from-teal-500/5 via-blue-500/5 to-purple-500/5"></div>
 
       {/* Floating elements */}
-      <motion.div
-        className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-r from-teal-400/20 to-blue-400/20 rounded-full blur-xl"
-        animate={{ x: [0, 30, 0], y: [0, -20, 0] }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.div
-        className="absolute bottom-20 right-10 w-24 h-24 bg-gradient-to-r from-purple-400/20 to-pink-400/20 rounded-full blur-xl"
-        animate={{ x: [0, -20, 0], y: [0, 30, 0] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-      />
+      {!reduceAnimations && (
+        <>
+          <motion.div
+            className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-r from-teal-400/20 to-blue-400/20 rounded-full blur-xl"
+            animate={{ x: [0, 30, 0], y: [0, -20, 0] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+          />
+          <motion.div
+            className="absolute bottom-20 right-10 w-24 h-24 bg-gradient-to-r from-purple-400/20 to-pink-400/20 rounded-full blur-xl"
+            animate={{ x: [0, -20, 0], y: [0, 30, 0] }}
+            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          />
+        </>
+      )}
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
@@ -106,21 +112,23 @@ const features = [
           >
             <div className="relative w-full max-w-md mx-auto">
               {/* Animated background glow */}
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-teal-400/40 via-blue-400/40 to-purple-400/40 rounded-3xl blur-3xl"
-                animate={{
-                  rotate: [0, 360],
-                  scale: [1, 1.1, 1]
-                }}
-                transition={{
-                  rotate: { duration: 20, repeat: Infinity, ease: "linear" },
-                  scale: { duration: 4, repeat: Infinity, ease: "easeInOut" }
-                }}
-              />
+              {!reduceAnimations && (
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-r from-teal-400/40 via-blue-400/40 to-purple-400/40 rounded-3xl blur-3xl"
+                  animate={{
+                    rotate: [0, 360],
+                    scale: [1, 1.1, 1]
+                  }}
+                  transition={{
+                    rotate: { duration: 20, repeat: Infinity, ease: "linear" },
+                    scale: { duration: 4, repeat: Infinity, ease: "easeInOut" }
+                  }}
+                />
+              )}
 
               <motion.div
                 className="relative z-10"
-                whileHover={{
+                whileHover={reduceAnimations ? {} : {
                   scale: 1.05,
                   rotateY: 5
                 }}
@@ -134,27 +142,31 @@ const features = [
               </motion.div>
 
               {/* Floating icons */}
-              <motion.div
-                className="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-r from-teal-400 to-cyan-400 rounded-xl shadow-lg flex items-center justify-center"
-                animate={{
-                  y: [0, -10, 0],
-                  rotate: [0, 10, 0]
-                }}
-                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-              >
-                <Sparkles className="text-white" size={24} />
-              </motion.div>
+              {!reduceAnimations && (
+                <>
+                  <motion.div
+                    className="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-r from-teal-400 to-cyan-400 rounded-xl shadow-lg flex items-center justify-center"
+                    animate={{
+                      y: [0, -10, 0],
+                      rotate: [0, 10, 0]
+                    }}
+                    transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                  >
+                    <Sparkles className="text-white" size={24} />
+                  </motion.div>
 
-              <motion.div
-                className="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-r from-purple-400 to-pink-400 rounded-xl shadow-lg flex items-center justify-center"
-                animate={{
-                  y: [0, 10, 0],
-                  rotate: [0, -10, 0]
-                }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              >
-                <Zap className="text-white" size={24} />
-              </motion.div>
+                  <motion.div
+                    className="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-r from-purple-400 to-pink-400 rounded-xl shadow-lg flex items-center justify-center"
+                    animate={{
+                      y: [0, 10, 0],
+                      rotate: [0, -10, 0]
+                    }}
+                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                  >
+                    <Zap className="text-white" size={24} />
+                  </motion.div>
+                </>
+              )}
             </div>
           </motion.div>
 
@@ -191,14 +203,14 @@ const features = [
                   initial={{ opacity: 0, y: 30 }}
                   animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                   transition={{ duration: 0.6, delay: 1.0 + feature.delay }}
-                  whileHover={{
+                  whileHover={reduceAnimations ? {} : {
                     scale: 1.05,
                     boxShadow: "0 25px 50px rgba(0,0,0,0.5), 0 0 30px rgba(20, 184, 166, 0.3)"
                   }}
                 >
                   <motion.div
                     className={`w-16 h-16 bg-gradient-to-r ${feature.gradient} rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg`}
-                    whileHover={{
+                    whileHover={reduceAnimations ? {} : {
                       scale: 1.1,
                       rotate: 5
                     }}

@@ -31,11 +31,13 @@ import {
   SiTailwindcss,
   SiGithub,
 } from "react-icons/si"
+import { useReduceAnimations } from "../hooks/useMediaQuery"
 
 export function SkillsSection() {
   const [isVisible, setIsVisible] = useState(false)
   const sectionRef = useRef(null)
   const prefersReducedMotion = useReducedMotion()
+  const reduceAnimations = useReduceAnimations()
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -100,16 +102,16 @@ export function SkillsSection() {
     color,
     delay,
     icon,
-    prefersReducedMotion: prefersReducedMotionProp,
+    reduceAnimations: reduceAnimationsProp,
   }: {
     name: string
     level: number
     color: string
     delay: number
     icon?: JSX.Element
-    prefersReducedMotion?: boolean
+    reduceAnimations?: boolean
   }) => {
-    const reducedMotion = prefersReducedMotionProp || false
+    const reducedMotion = reduceAnimationsProp || false
 
     return (
       <motion.div
@@ -217,7 +219,7 @@ export function SkillsSection() {
             </div>
             <div className="space-y-2">
               {webDevSkills.map((skill, index) => (
-                <SkillBar key={index} name={skill.name} level={skill.level} color={skill.color} delay={0.8 + index * 0.1} icon={skill.icon} prefersReducedMotion={prefersReducedMotion} />
+                <SkillBar key={index} name={skill.name} level={skill.level} color={skill.color} delay={0.8 + index * 0.1} icon={skill.icon} reduceAnimations={reduceAnimations} />
               ))}
             </div>
           </motion.div>
@@ -243,7 +245,7 @@ export function SkillsSection() {
               {programmingLanguages.map(
                 (skill, index) =>
                   skill && (
-                    <SkillBar key={index} name={skill.name} level={skill.level} color={skill.color} delay={1.0 + index * 0.1} icon={skill.icon} prefersReducedMotion={prefersReducedMotion} />
+                    <SkillBar key={index} name={skill.name} level={skill.level} color={skill.color} delay={1.0 + index * 0.1} icon={skill.icon} reduceAnimations={reduceAnimations} />
                   ),
               )}
             </div>
@@ -256,7 +258,7 @@ export function SkillsSection() {
           initial={{ opacity: 0, y: 50 }}
           animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 0.8, delay: 0.75 }}
-          whileHover={{
+          whileHover={reduceAnimations ? {} : {
             boxShadow: "0 25px 50px rgba(0,0,0,0.5), 0 0 30px rgba(251, 146, 60, 0.25)",
           }}
           style={{ willChange: "box-shadow" }}
@@ -279,7 +281,7 @@ export function SkillsSection() {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={isVisible ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
                 transition={{ duration: 0.5, delay: 0.9 + index * 0.08 }}
-                whileHover={{ y: -5, boxShadow: "0 12px 30px rgba(0,0,0,0.4)" }}
+                whileHover={reduceAnimations ? {} : { y: -5, boxShadow: "0 12px 30px rgba(0,0,0,0.4)" }}
               >
                 <div className={`w-10 h-10 bg-gradient-to-r ${skill.gradient} rounded-xl flex items-center justify-center mb-3 shadow-lg group-hover:scale-110 group-hover:rotate-5 transition-transform duration-300`}>
                   <div className="text-white">{skill.icon}</div>
@@ -297,8 +299,8 @@ export function SkillsSection() {
             initial={{ opacity: 0, y: 50 }}
             animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
             transition={{ duration: 0.8, delay: 0.8 }}
-            whileHover={{
-              boxShadow: "0 25px 50px rgba(0,0,0,0.5), 0 0 30px rgba(59, 130, 246, 0.3)",
+            whileHover={reduceAnimations ? {} : {
+              boxShadow: "0 25px 50px rgba(0,0,0.5), 0 0 30px rgba(59, 130, 246, 0.3)",
             }}
             style={{ willChange: "box-shadow" }}
           >
@@ -311,7 +313,7 @@ export function SkillsSection() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                   transition={{ duration: 0.6, delay: 1.0 + index * 0.1 }}
-                  whileHover={{ y: -5 }}
+                  whileHover={reduceAnimations ? {} : { y: -5 }}
                   style={{ willChange: "transform" }}
                 >
                   <div className={`w-10 h-10 bg-gradient-to-r ${tool.gradient} rounded-lg flex items-center justify-center md:mr-3 md:mr-0 shadow-lg group-hover:scale-110 group-hover:rotate-5 transition-transform duration-300 flex-shrink-0`}>
@@ -328,7 +330,7 @@ export function SkillsSection() {
             initial={{ opacity: 0, y: 50 }}
             animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
             transition={{ duration: 0.8, delay: 0.9 }}
-            whileHover={{
+            whileHover={reduceAnimations ? {} : {
               boxShadow: "0 25px 50px rgba(0,0,0,0.5), 0 0 30px rgba(236, 72, 153, 0.3)",
             }}
             style={{ willChange: "box-shadow" }}
@@ -342,7 +344,7 @@ export function SkillsSection() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                   transition={{ duration: 0.6, delay: 1.2 + index * 0.1 }}
-                  whileHover={{ y: -5 }}
+                  whileHover={reduceAnimations ? {} : { y: -5 }}
                   style={{ willChange: "transform" }}
                 >
                   <div className={`w-10 h-10 bg-gradient-to-r ${skill.gradient} rounded-lg flex items-center justify-center md:mr-3 md:mr-0 shadow-lg group-hover:scale-110 group-hover:rotate-5 transition-transform duration-300 flex-shrink-0`}>

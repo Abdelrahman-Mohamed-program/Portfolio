@@ -2,11 +2,13 @@ import { Quote, Star, ChevronLeft, ChevronRight, Users, Award, Clock } from "luc
 import { SectionBackground } from "./ui/SectionBackground"
 import { motion, AnimatePresence } from "motion/react"
 import { useEffect, useRef, useState } from "react"
+import { useReduceAnimations } from "../hooks/useMediaQuery"
 
 export function TestimonialsSection() {
   const [isVisible, setIsVisible] = useState(false)
   const [currentTestimonial, setCurrentTestimonial] = useState(0)
   const sectionRef = useRef(null)
+  const reduceAnimations = useReduceAnimations()
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -161,7 +163,15 @@ export function TestimonialsSection() {
               transition={{ delay: 0.6 + index * 0.1 }}
             >
               <div className={`w-16 h-16 mx-auto mb-4 flex items-center justify-center rounded-xl bg-gradient-to-br ${stat.gradient}`}>
-                {stat.icon}
+                {!reduceAnimations && (
+                  <motion.div
+                    animate={{ scale: [1, 1.1, 1], rotate: [0, 5, 0] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                  >
+                    {stat.icon}
+                  </motion.div>
+                )}
+                {reduceAnimations && stat.icon}
               </div>
 
               <div className="text-4xl text-white mb-2">{stat.number}</div>

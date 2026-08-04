@@ -2,10 +2,12 @@ import { GraduationCap, Award, BookOpen, Star, Trophy, Sparkles } from "lucide-r
 import { SectionBackground } from "./ui/SectionBackground"
 import { motion } from "motion/react"
 import { useEffect, useRef, useState } from "react"
+import { useReduceAnimations } from "../hooks/useMediaQuery"
 
 export function EducationSection() {
   const [isVisible, setIsVisible] = useState(false)
   const sectionRef = useRef(null)
+  const reduceAnimations = useReduceAnimations()
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -115,12 +117,12 @@ export function EducationSection() {
                   {/* Timeline icon */}
                   <motion.div
                     className={`absolute left-0 md:left-1/2 md:-translate-x-1/2 w-16 h-16 bg-gradient-to-r ${item.gradient} rounded-2xl flex items-center justify-center text-white z-10 shadow-lg border-4 border-white/20`}
-                    whileHover={{
+                    whileHover={reduceAnimations ? {} : {
                       scale: 1.1,
                       rotate: 5,
                       boxShadow: "0 0 30px rgba(20, 184, 166, 0.6)",
                     }}
-                    animate={{
+                    animate={reduceAnimations ? {} : {
                       boxShadow: [
                         "0 0 20px rgba(20, 184, 166, 0.3)",
                         "0 0 40px rgba(139, 92, 246, 0.5)",
@@ -140,7 +142,7 @@ export function EducationSection() {
                     initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
                     animate={isVisible ? { opacity: 1, x: 0 } : { opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
                     transition={{ duration: 0.8, delay: 1.0 + index * 0.2 }}
-                    whileHover={{
+                    whileHover={reduceAnimations ? {} : {
                       scale: 1.02,
                       y: -5,
                     }}
@@ -161,13 +163,15 @@ export function EducationSection() {
                       <p className="text-gray-200 leading-relaxed">{item.description}</p>
 
                       {/* Decorative element */}
-                      <motion.div
-                        className="absolute top-4 right-4 w-8 h-8 opacity-20"
-                        animate={{ rotate: [0, 360] }}
-                        transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-                      >
-                        <Sparkles className="w-full h-full text-white" />
-                      </motion.div>
+                      {!reduceAnimations && (
+                        <motion.div
+                          className="absolute top-4 right-4 w-8 h-8 opacity-20"
+                          animate={{ rotate: [0, 360] }}
+                          transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+                        >
+                          <Sparkles className="w-full h-full text-white" />
+                        </motion.div>
+                      )}
                     </div>
                   </motion.div>
                 </div>

@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 import { useReducedMotion } from 'motion/react';
+import { useIsMobile } from '../../hooks/useMediaQuery';
 
 interface SectionBackgroundProps {
   variant?: 'default' | 'hero' | 'education' | 'skills' | 'services' | 'projects' | 'contact';
@@ -13,13 +14,14 @@ export function SectionBackground({
   reducedMotion: reducedMotionProp,
 }: SectionBackgroundProps) {
   const prefersReducedMotion = useReducedMotion();
-  const reducedMotion = reducedMotionProp || prefersReducedMotion;
+  const isMobile = useIsMobile();
+  const reducedMotion = reducedMotionProp || prefersReducedMotion || isMobile;
 
   const baseTransition = { duration: 6, repeat: Infinity, ease: 'easeInOut' as const };
   const slowTransition = { duration: 8, repeat: Infinity, ease: 'easeInOut' as const };
   const verySlowTransition = { duration: 10, repeat: Infinity, ease: 'easeInOut' as const };
 
-  // Static positions for reduced motion
+  // Static positions for reduced motion or mobile
   const staticStyle = { opacity: 0.15 };
 
   if (reducedMotion) {

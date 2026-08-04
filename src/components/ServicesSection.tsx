@@ -2,10 +2,12 @@ import { Monitor, Wrench, Palette, Zap, Server, ArrowRight, Briefcase } from "lu
 import { SectionBackground } from "./ui/SectionBackground"
 import { motion } from "motion/react"
 import { useEffect, useRef, useState } from "react"
+import { useReduceAnimations } from "../hooks/useMediaQuery"
 
 export function ServicesSection() {
   const [isVisible, setIsVisible] = useState(false)
   const sectionRef = useRef(null)
+  const reduceAnimations = useReduceAnimations()
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -112,7 +114,7 @@ export function ServicesSection() {
               initial={{ opacity: 0, y: 50 }}
               animate={isVisible ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: index * 0.1 + 0.7 }}
-              whileHover={{
+              whileHover={reduceAnimations ? {} : {
                 scale: 1.05,
                 boxShadow: "0 25px 50px rgba(0,0,0,0.5), 0 0 30px rgba(20, 184, 166, 0.3)",
                 rotateY: 5,
@@ -134,7 +136,7 @@ export function ServicesSection() {
                 {/* Icon container */}
                 <motion.div
                   className={`w-16 h-16 bg-gradient-to-br ${service.gradient} rounded-xl flex items-center justify-center mb-6 shadow-lg`}
-                  whileHover={{
+                  whileHover={reduceAnimations ? {} : {
                     scale: 1.1,
                     rotate: 5,
                     boxShadow: "0 10px 30px rgba(0,0,0,0.2)",
@@ -178,11 +180,13 @@ export function ServicesSection() {
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-teal-400/10 to-transparent transform -skew-y-3"></div>
 
             {/* Floating elements inside CTA */}
-            <motion.div
-              className="absolute top-4 right-4 w-8 h-8 bg-gradient-to-r from-teal-400/20 to-blue-400/20 rounded-full blur-sm"
-              animate={{ scale: [1, 1.3, 1] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-            />
+            {!reduceAnimations && (
+              <motion.div
+                className="absolute top-4 right-4 w-8 h-8 bg-gradient-to-r from-teal-400/20 to-blue-400/20 rounded-full blur-sm"
+                animate={{ scale: [1, 1.3, 1] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+              />
+            )}
 
             <div className="relative z-10">
               <motion.h3
@@ -219,7 +223,7 @@ export function ServicesSection() {
                 <ArrowRight className="ml-3 group-hover:translate-x-1 transition-transform duration-300" size={20} />
                 <motion.div
                   className="ml-3 w-2 h-2 bg-white rounded-full"
-                  animate={{ scale: [1, 1.5, 1] }}
+                  animate={reduceAnimations ? {} : { scale: [1, 1.5, 1] }}
                   transition={{ duration: 2, repeat: Infinity }}
                 />
               </motion.button>
