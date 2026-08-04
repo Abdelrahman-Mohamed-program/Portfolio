@@ -7,6 +7,7 @@ import { ServicesSection } from "./components/ServicesSection"
 import { ProjectsSection } from "./components/ProjectsSection"
 import { TestimonialsSection } from "./components/TestimonialsSection"
 import { ContactSection } from "./components/ContactSection"
+import { SectionBackground } from "./components/ui/SectionBackground"
 import { motion } from "motion/react"
 import { ArrowUp, Heart } from "lucide-react"
 import { useState, useEffect } from "react"
@@ -60,21 +61,8 @@ export default function App() {
       </motion.button>
       
       {/* Footer */}
-      <footer className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white py-16 overflow-hidden">
-        {/* Background elements */}
-        <div className="absolute inset-0 bg-gradient-to-r from-teal-500/5 via-blue-500/5 to-purple-500/5"></div>
-        
-        {/* Floating elements */}
-        <motion.div 
-          className="absolute top-10 left-10 w-20 h-20 bg-gradient-to-r from-teal-400/10 to-blue-400/10 rounded-full blur-xl"
-          animate={{ y: [0, -20, 0] }}
-          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div 
-          className="absolute bottom-10 right-10 w-16 h-16 bg-gradient-to-r from-purple-400/10 to-pink-400/10 rounded-full blur-xl"
-          animate={{ y: [0, 20, 0] }}
-          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        />
+      <footer className="relative text-white py-16 overflow-hidden">
+        <SectionBackground variant="default" />
         
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 

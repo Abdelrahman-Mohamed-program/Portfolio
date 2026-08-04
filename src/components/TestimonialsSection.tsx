@@ -1,5 +1,5 @@
 import { Quote, Star, ChevronLeft, ChevronRight, Users, Award, Clock } from "lucide-react"
-import { ImageWithFallback } from "./figma/ImageWithFallback"
+import { SectionBackground } from "./ui/SectionBackground"
 import { motion, AnimatePresence } from "motion/react"
 import { useEffect, useRef, useState } from "react"
 
@@ -27,8 +27,8 @@ export function TestimonialsSection() {
       author: "Amany.M.",
       role: "Business Owner, Cairo",
       rating: 5,
-      image: null
-    }
+      image: null,
+    },
   ]
 
   const stats = [
@@ -36,20 +36,20 @@ export function TestimonialsSection() {
       icon: <Users className="w-8 h-8" />,
       number: "5+",
       label: "Projects Completed",
-      gradient: "from-blue-500 to-purple-600"
+      gradient: "from-blue-500 to-purple-600",
     },
     {
       icon: <Award className="w-8 h-8" />,
       number: "100%",
       label: "Client Satisfaction",
-      gradient: "from-teal-500 to-cyan-600"
+      gradient: "from-teal-500 to-cyan-600",
     },
     {
       icon: <Clock className="w-8 h-8" />,
       number: "On-time",
       label: "Production Deployments",
-      gradient: "from-orange-500 to-red-600"
-    }
+      gradient: "from-orange-500 to-red-600",
+    },
   ]
 
   const nextTestimonial = () => {
@@ -68,12 +68,8 @@ export function TestimonialsSection() {
       .toUpperCase()
 
   return (
-    <section
-      ref={sectionRef}
-      id="testimonials"
-      className="relative py-24 bg-gradient-to-br from-gray-900 via-gray-800 to-black overflow-hidden"
-    >
-      <div className="absolute inset-0 bg-gradient-to-br from-teal-500/10 via-blue-500/10 to-purple-500/10" />
+    <section ref={sectionRef} id="testimonials" className="relative py-24 overflow-hidden">
+      <SectionBackground variant="default" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
@@ -136,9 +132,7 @@ export function TestimonialsSection() {
                     <div className="text-xl gradient-text-secondary">
                       {testimonials[currentTestimonial].author}
                     </div>
-                    <div className="text-gray-400 text-sm">
-                      {testimonials[currentTestimonial].role}
-                    </div>
+                    <div className="text-gray-400 text-sm">{testimonials[currentTestimonial].role}</div>
                   </div>
                 </div>
               </div>
@@ -166,9 +160,7 @@ export function TestimonialsSection() {
               animate={isVisible ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.6 + index * 0.1 }}
             >
-              <div
-                className={`w-16 h-16 mx-auto mb-4 flex items-center justify-center rounded-xl bg-gradient-to-br ${stat.gradient}`}
-              >
+              <div className={`w-16 h-16 mx-auto mb-4 flex items-center justify-center rounded-xl bg-gradient-to-br ${stat.gradient}`}>
                 {stat.icon}
               </div>
 
