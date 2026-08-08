@@ -6,7 +6,7 @@ import { SectionBackground } from "./ui/SectionBackground";
 import { useReduceAnimations } from "../hooks/useMediaQuery";
 
 // Cloudinary optimized URL for hero image - auto format, quality, sized for hero dimensions
-const HERO_IMAGE_URL = "https://res.cloudinary.com/dwh6drlr9/image/upload/w_800,h_1000,c_fill,q_auto,f_auto/v1785843811/me--8AWmYK6_gfjrmc.png";
+const HERO_IMAGE_URL = "https://res.cloudinary.com/dwh6drlr9/image/upload/w_800,h_1000,c_fill,q_auto,f_auto/v1786215751/causal.me_sd18my.png";
 
 // Remote image component for Cloudinary URLs with blur placeholder
 function RemoteHeroImage({ alt }: { alt: string }) {
@@ -32,7 +32,7 @@ function RemoteHeroImage({ alt }: { alt: string }) {
       {/* Blur placeholder - low quality version */}
       {!isLoaded && (
         <img
-          src="https://res.cloudinary.com/dwh6drlr9/image/upload/w_20,h_25,c_fill,q_10,f_auto/v1785843811/me--8AWmYK6_gfjrmc.png"
+          src="https://res.cloudinary.com/dwh6drlr9/image/upload/w_20,h_25,c_fill,q_10,f_auto/v1786215751/causal.me_sd18my.png"
           alt=""
           aria-hidden="true"
           style={{
