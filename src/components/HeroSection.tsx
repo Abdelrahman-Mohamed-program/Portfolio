@@ -1,7 +1,6 @@
 import { ArrowRight, ChevronDown, Sparkles, Code, Rocket, Trophy, Atom } from "lucide-react";
 import { motion } from "motion/react";
 import { useEffect, useState } from "react";
-import { HeroImage } from "./figma/OptimizedImage";
 import { SectionBackground } from "./ui/SectionBackground";
 import { useReduceAnimations } from "../hooks/useMediaQuery";
 
@@ -237,11 +236,12 @@ export function HeroSection() {
                 transition={{ duration: 0.3 }}
                 style={{ perspective: "1000px" }}
               >
-                <HeroImage
+                <img
                   src="/causal.me.png"
                   alt="Abdelrahman Mohamed - Professional Developer"
                   className="w-full h-auto rounded-3xl"
-                  priority
+                  loading="eager"
+                  fetchPriority="high"
                   sizes="(max-width: 1023px) 100vw, 50vw"
                 />
                 {/* Bottom fade mask - blend into dark background */}
