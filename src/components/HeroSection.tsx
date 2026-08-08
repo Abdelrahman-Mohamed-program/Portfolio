@@ -5,54 +5,6 @@ import { HeroImage } from "./figma/OptimizedImage";
 import { SectionBackground } from "./ui/SectionBackground";
 import { useReduceAnimations } from "../hooks/useMediaQuery";
 
-// Cloudinary optimized URL for hero image - auto format, quality, sized for hero dimensions
-const HERO_IMAGE_URL = "https://res.cloudinary.com/dwh6drlr9/image/upload/w_800,h_1000,c_fill,q_auto,f_auto/v1786215751/causal.me_sd18my.png";
-
-// Remote image component for Cloudinary URLs with blur placeholder
-function RemoteHeroImage({ alt }: { alt: string }) {
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  return (
-    <picture>
-      <img
-        src={HERO_IMAGE_URL}
-        alt={alt}
-        loading="eager"
-        fetchPriority="high"
-        style={{
-          width: '100%',
-          height: '100%',
-          display: 'block',
-          opacity: isLoaded ? 1 : 0,
-          transition: 'opacity 300ms ease-out',
-          objectFit: 'cover',
-        }}
-        onLoad={() => setIsLoaded(true)}
-      />
-      {/* Blur placeholder - low quality version */}
-      {!isLoaded && (
-        <img
-          src="https://res.cloudinary.com/dwh6drlr9/image/upload/w_20,h_25,c_fill,q_10,f_auto/v1786215751/causal.me_sd18my.png"
-          alt=""
-          aria-hidden="true"
-          style={{
-            position: 'absolute',
-            inset: 0,
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            filter: 'blur(20px)',
-            transform: 'scale(1.1)',
-            opacity: isLoaded ? 0 : 1,
-            transition: 'opacity 300ms ease-out',
-            pointerEvents: 'none',
-          }}
-        />
-      )}
-    </picture>
-  );
-}
-
 export function HeroSection() {
   const [isVisible, setIsVisible] = useState(false);
   const reduceAnimations = useReduceAnimations();
@@ -254,11 +206,11 @@ export function HeroSection() {
             transition={{ duration: 0.8, delay: 0.4 }}
           >
             <div className="relative w-full max-w-lg mx-auto">
-              {/* Animated background glow */}
+              {/* Animated background glow - reduced opacity */}
               {!reduceAnimations && (
                 <>
                   <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-teal-400/40 via-blue-400/40 to-purple-400/40 rounded-3xl blur-3xl"
+                    className="absolute inset-0 bg-gradient-to-r from-teal-400/20 via-blue-400/20 to-purple-400/20 rounded-3xl blur-3xl"
                     animate={{ rotate: [0, 360], scale: [1, 1.1, 1] }}
                     transition={{
                       rotate: { duration: 20, repeat: Infinity, ease: "linear" },
@@ -266,9 +218,9 @@ export function HeroSection() {
                     }}
                   />
 
-                  {/* Secondary glow */}
+                  {/* Secondary glow - reduced opacity */}
                   <motion.div
-                    className="absolute inset-0 bg-gradient-to-l from-pink-400/30 via-cyan-400/30 to-indigo-400/30 rounded-3xl blur-2xl"
+                    className="absolute inset-0 bg-gradient-to-l from-pink-400/15 via-cyan-400/15 to-indigo-400/15 rounded-3xl blur-2xl"
                     animate={{ rotate: [360, 0], scale: [0.8, 1.2, 0.8] }}
                     transition={{
                       rotate: { duration: 15, repeat: Infinity, ease: "linear" },
@@ -278,14 +230,22 @@ export function HeroSection() {
                 </>
               )}
 
-              {/* Main image - using optimized Cloudinary URL */}
+              {/* Main image - local causal.me.png with desktop right shift, bottom fade */}
               <motion.div
-                className="relative z-10"
+                className="relative z-10 lg:scale-90 lg:translate-x-8"
                 whileHover={reduceAnimations ? {} : { scale: 1.05, rotateY: 5, rotateX: 5 }}
                 transition={{ duration: 0.3 }}
                 style={{ perspective: "1000px" }}
               >
-                <RemoteHeroImage alt="Abdelrahman Mohamed - Professional Developer" />
+                <HeroImage
+                  src="/causal.me.png"
+                  alt="Abdelrahman Mohamed - Professional Developer"
+                  className="w-full h-auto rounded-3xl"
+                  priority
+                  sizes="(max-width: 1023px) 100vw, 50vw"
+                />
+                {/* Bottom fade mask - blend into dark background */}
+                <div className="absolute bottom-0 left-0 right-0 h-32 md:h-48 bg-gradient-to-t from-gray-900 via-gray-900/50 to-transparent pointer-events-none rounded-b-3xl" />
               </motion.div>
 
               {/* Floating tech icons — reduced from 4 to 2 on mobile */}
