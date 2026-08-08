@@ -1,16 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png" />
+    <link rel="alternate icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#14b8a6" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#0d9488" media="(prefers-color-scheme: light)" />
 
-  <!DOCTYPE html>
-  <html lang="en">
-    <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-      <title>Personal Portfolio Website Design</title>
-    </head>
+    <!-- SEO Foundation -->
+    <title>Abdelrahman Mohamed — Full-Stack Developer & Co-founder | MERN Stack Portfolio</title>
+    <meta name="description" content="Full-Stack Developer and Co-founder of Masr360. Building scalable MERN stack applications, REST APIs, and cloud infrastructure. Top 20 in Huawei Dev Competition North Africa. Available for freelance and full-time opportunities." />
+    <meta name="keywords" content="Full-Stack Developer, MERN Stack, React, Node.js, MongoDB, Express, TypeScript, Backend Developer, API Development, Cloud Deployment, Masr360, Freelance Web Developer" />
+    <meta name="author" content="Abdelrahman Mohamed" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <link rel="canonical" href="https://abdelrahman.tech/" />
 
-    <body>
-      <div id="root"></div>
-      <script type="module" src="/src/main.tsx"></script>
-    </body>
-  </html>
-  
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://abdelrahman.tech/" />
+    <meta property="og:title" content="Abdelrahman Mohamed — Full-Stack Developer & Co-founder" />
+    <meta property="og:description" content="Full-Stack Developer and Co-founder of Masr360. Building scalable MERN stack applications, REST APIs, and cloud infrastructure. Top 20 in Huawei Dev Competition North Africa." />
+    <meta property="og:image" content="https://abdelrahman.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Abdelrahman Mohamed — Full-Stack Developer Portfolio" />
+    <meta property="og:site_name" content="Abdelrahman Mohamed Portfolio" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://abdelrahman.tech/" />
+    <meta name="twitter:title" content="Abdelrahman Mohamed — Full-Stack Developer & Co-founder" />
+    <meta name="twitter:description" content="Full-Stack Developer and Co-founder of Masr360. Building scalable MERN stack applications, REST APIs, and cloud infrastructure. Top 20 in Huawei Dev Competition North Africa." />
+    <meta name="twitter:image" content="https://abdelrahman.tech/og-image.png" />
+    <meta name="twitter:image:alt" content="Abdelrahman Mohamed — Full-Stack Developer Portfolio" />
+    <meta name="twitter:site" content="@abdelrahman_dev" />
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://abdelrahman.tech/#website",
+          "url": "https://abdelrahman.tech/",
+          "name": "Abdelrahman Mohamed Portfolio",
+          "description": "Full-Stack Developer and Co-founder of Masr360. Building scalable MERN stack applications, REST APIs, and cloud infrastructure.",
+          "publisher": {
+            "@id": "https://abdelrahman.tech/#person"
+          },
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": {
+              "@type": "EntryPoint",
+              "urlTemplate": "https://abdelrahman.tech/?q={search_term_string}"
+            },
+            "query-input": "required name=search_term_string"
+          }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://abdelrahman.tech/#webpage",
+          "url": "https://abdelrahman.tech/",
+          "name": "Abdelrahman Mohamed — Full-Stack Developer & Co-founder",
+          "description": "Full-Stack Developer and Co-founder of Masr360. Building scalable MERN stack applications, REST APIs, and cloud infrastructure. Top 20 in Huawei Dev Competition North Africa.",
+          "isPartOf": {
+            "@id": "https://abdelrahman.tech/#website"
+          },
+          "about": {
+            "@id": "https://abdelrahman.tech/#person"
+          },
+          "mainEntity": {
+            "@id": "https://abdelrahman.tech/#person"
+          }
+        },
+        {
+          "@type": "Person",
+          "@id": "https://abdelrahman.tech/#person",
+          "name": "Abdelrahman Mohamed",
+          "jobTitle": "Full-Stack Developer",
+          "url": "https://abdelrahman.tech/",
+          "image": "https://res.cloudinary.com/dwh6drlr9/image/upload/w_400,h_400,c_fill,q_auto,f_auto/v1785843811/me--8AWmYK6_gfjrmc.png",
+          "email": "mailto:abdelarahman2022@gmail.com",
+          "worksFor": {
+            "@type": "Organization",
+            "name": "Masr360",
+            "url": "https://www.m360travel.com",
+            "description": "Gamified tourism platform — Top 20 North Africa, Huawei Developer Competition"
+          },
+          "alumniOf": [
+            {
+              "@type": "EducationalOrganization",
+              "name": "Ain Shams University",
+              "url": "https://www.asu.edu.eg/"
+            },
+            {
+              "@type": "EducationalOrganization",
+              "name": "Harvard University",
+              "url": "https://www.harvard.edu/"
+            },
+            {
+              "@type": "EducationalOrganization",
+              "name": "Digital Egypt Pioneers Initiative (DEPI)",
+              "url": "https://depi.gov.eg/"
+            }
+          ],
+          "knowsAbout": [
+            "React",
+            "Node.js",
+            "Express.js",
+            "MongoDB",
+            "TypeScript",
+            "JavaScript (ES6+)",
+            "HTML5",
+            "CSS3",
+            "Tailwind CSS",
+            "REST API Design",
+            "JWT Authentication",
+            "Cloud Deployment",
+            "Nginx",
+            "PM2",
+            "Git",
+            "C++",
+            "Python",
+            "Java",
+            "Data Structures",
+            "Algorithms",
+            "Database Systems",
+            "Computer Graphics",
+            "Frontend Architecture",
+            "Backend Architecture"
+          ],
+          "sameAs": [
+            "https://github.com/Abdelrahman-Mohamed-program",
+            "https://linkedin.com/in/abdelarahman-mohamed"
+          ]
+        },
+        {
+          "@type": "CreativeWork",
+          "@id": "https://abdelrahman.tech/#portfolio",
+          "name": "Abdelrahman Mohamed Portfolio",
+          "description": "Professional portfolio showcasing full-stack development projects, skills, and experience.",
+          "creator": {
+            "@id": "https://abdelrahman.tech/#person"
+          },
+          "about": {
+            "@id": "https://abdelrahman.tech/#person"
+          },
+          "workExample": [
+            {
+              "@type": "SoftwareApplication",
+              "name": "Masr360 — Gamified Tourism Platform",
+              "description": "Full-stack gamified tourism platform. Built backend from scratch with Node.js, Express, MongoDB. Deployed to production. Top 20 North Africa in Huawei Developer Competition.",
+              "url": "https://www.m360travel.com",
+              "applicationCategory": "TravelApplication",
+              "operatingSystem": "Web",
+              "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD"
+              }
+            },
+            {
+              "@type": "SoftwareApplication",
+              "name": "Mango Business Website",
+              "description": "Responsive production-ready website for mango business client. Delivered in 72 hours. React, CSS3, Bootstrap.",
+              "url": "https://amaniango.netlify.app/",
+              "applicationCategory": "BusinessApplication",
+              "operatingSystem": "Web"
+            },
+            {
+              "@type": "SoftwareApplication",
+              "name": "Social Media Dashboard",
+              "description": "Full-stack dashboard for businesses to track social media performance with real-time data visualization. React, Node.js, Express, MongoDB.",
+              "url": "https://github.com/Abdelrahman-Mohamed-program/Social-Media-Dashboard",
+              "applicationCategory": "BusinessApplication",
+              "operatingSystem": "Web"
+            },
+            {
+              "@type": "SoftwareApplication",
+              "name": "Travel Booking System",
+              "description": "Complete backend system for travel platform with user management, destination browsing, booking flow, and JWT authentication. Node.js, Express, MongoDB.",
+              "url": "https://github.com/Abdelrahman-Mohamed-program/Tavelsta",
+              "applicationCategory": "TravelApplication",
+              "operatingSystem": "Web"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+
+    <!-- Preconnect for external resources -->
+    <link rel="preconnect" href="https://res.cloudinary.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Security headers via meta tags (for static hosting) -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://res.cloudinary.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://res.cloudinary.com https://api.emailjs.com; frame-src https://res.cloudinary.com; base-uri 'self'; form-action 'self' https://api.emailjs.com;" />
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()" />
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

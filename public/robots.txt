@@ -1,0 +1,28 @@
+# robots.txt for https://abdelrahman.tech/
+# Generated for Abdelrahman Mohamed Portfolio
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://abdelrahman.tech/sitemap.xml
+
+# Crawl-delay for respectful crawling (optional)
+Crawl-delay: 10
+
+# Disallow admin/private paths if any
+Disallow: /node_modules/
+Disallow: /src/
+Disallow: /scripts/
+Disallow: /*.json$
+Disallow: /*.ts$
+Disallow: /*.tsx$
+Disallow: /*.config.*
+Disallow: /bundle-stats.html
+
+# Allow important assets
+Allow: /favicon.ico
+Allow: /favicon.svg
+Allow: /apple-touch-icon.png
+Allow: /site.webmanifest
+Allow: /og-image.png
