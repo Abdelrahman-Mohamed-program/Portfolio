@@ -229,7 +229,7 @@ export function HeroSection() {
                 </>
               )}
 
-              {/* Main image - local causal.me.png with desktop right shift, bottom fade */}
+              {/* Main image - local causal.me.png with desktop right shift */}
               <motion.div
                 className="relative z-10 lg:scale-90 lg:translate-x-8"
                 whileHover={reduceAnimations ? {} : { scale: 1.05, rotateY: 5, rotateX: 5 }}
@@ -244,8 +244,6 @@ export function HeroSection() {
                   fetchPriority="high"
                   sizes="(max-width: 1023px) 100vw, 50vw"
                 />
-                {/* Bottom fade mask - blend into dark background */}
-                <div className="absolute bottom-0 left-0 right-0 h-32 md:h-48 bg-gradient-to-t from-gray-900 via-gray-900/50 to-transparent pointer-events-none rounded-b-3xl" />
               </motion.div>
 
               {/* Floating tech icons — reduced from 4 to 2 on mobile */}
