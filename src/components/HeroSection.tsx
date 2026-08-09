@@ -1,8 +1,9 @@
-import { ArrowRight, ChevronDown, Sparkles, Code, Rocket, Trophy, Atom } from "lucide-react";
+import { ArrowRight, ChevronDown, Sparkles, Code, Rocket, Trophy, Atom, FileText } from "lucide-react";
 import { motion } from "motion/react";
 import { useEffect, useState } from "react";
 import { SectionBackground } from "./ui/SectionBackground";
 import { useReduceAnimations } from "../hooks/useMediaQuery";
+import { portfolioConfig } from "../config/portfolio";
 
 export function HeroSection() {
   const [isVisible, setIsVisible] = useState(false);
@@ -195,6 +196,38 @@ export function HeroSection() {
                 />
               </motion.button>
             </motion.div>
+
+            {/* CV Button - Subtle supporting action on its own row
+            <motion.div
+              className="flex justify-center lg:justify-start"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 1.6 }}
+            >
+              <motion.a
+                href={portfolioConfig.cvUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-2 px-5 py-2.5 bg-white/5 border border-white/10 rounded-lg backdrop-blur-sm text-white/70 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all duration-300"
+                whileHover={{ scale: 1.02, y: -1 }}
+                whileTap={{ scale: 0.98 }}
+                aria-label="View CV - opens in new tab"
+              >
+                <motion.div
+                  className="flex items-center justify-center w-7 h-7 bg-gradient-to-br from-teal-500/15 to-blue-500/15 rounded-lg border border-teal-500/20"
+                  whileHover={{ scale: 1.1, rotate: 3 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <FileText className="text-teal-300 group-hover:text-teal-200 transition-colors" size={14} />
+                </motion.div>
+                <span className="text-sm font-medium tracking-wide">View CV</span>
+                <motion.div
+                  className="w-1.5 h-1.5 bg-teal-400/40 rounded-full"
+                  animate={reduceAnimations ? {} : { scale: [1, 1.4, 1], opacity: [0.4, 0.8, 0.4] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                />
+              </motion.a>
+            </motion.div> */}
           </motion.div>
 
           {/* Right content - Image */}
@@ -231,7 +264,7 @@ export function HeroSection() {
 
               {/* Main image - local causal.me.png with desktop right shift */}
               <motion.div
-                className="relative z-10 lg:scale-90 lg:translate-x-8"
+                className="relative z-10 lg:scale-90 lg:translate-x-6"
                 whileHover={reduceAnimations ? {} : { scale: 1.05, rotateY: 5, rotateX: 5 }}
                 transition={{ duration: 0.3 }}
                 style={{ perspective: "1000px" }}
@@ -246,7 +279,7 @@ export function HeroSection() {
                 />
               </motion.div>
 
-              {/* Floating tech icons — reduced from 4 to 2 on mobile */}
+              {/* Floating tech icons — reduced from 4 to 2 on mobile
               {!reduceAnimations && (
                 <>
                   <motion.div
@@ -267,7 +300,7 @@ export function HeroSection() {
                     <Rocket className="text-white text-2xl md:text-3xl" />
                   </motion.div>
                 </>
-              )}
+              )} */}
             </div>
           </motion.div>
         </div>
