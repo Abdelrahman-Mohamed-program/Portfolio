@@ -270,7 +270,7 @@ export function HeroSection() {
                 style={{ perspective: "1000px" }}
               >
                 <img
-                  src="/causal.me.png"
+                  src="https://res.cloudinary.com/dwh6drlr9/image/upload/f_auto,q_95,w_1254/v1786308576/causal.me_doafeu.png"
                   alt="Abdelrahman Mohamed - Professional Developer"
                   className="w-full h-auto rounded-3xl"
                   loading="eager"
