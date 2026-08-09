@@ -124,7 +124,7 @@ export function OptimizedImage({
         src={`${OPTIMIZED_PATH}${src}-${Math.max(...widths)}w${JPG_EXT}`}
         alt={alt}
         loading={priority ? 'eager' : 'lazy'}
-        fetchPriority={priority ? 'high' : 'auto'}
+        fetchpriority={priority ? 'high' : 'auto'}
         style={imgStyle}
         onLoad={() => setIsLoaded(true)}
         onError={() => setHasError(true)}
